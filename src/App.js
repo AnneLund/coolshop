@@ -6,7 +6,7 @@ import DeliveryDate from "./DeliveryDate";
 function App() {
   const [price, setPrice] = useState(0);
 
-  //Jeg returnerer den afrundende pris via en Math.ceil-funktion
+  //Jeg returnerer den afrundede pris via en Math.ceil-funktion
 
   const roundToNearest = (value, nearest) => {
     return Math.ceil(value / nearest) * nearest;
@@ -19,8 +19,8 @@ function App() {
     let roundedValue = roundToNearest(value, 0.5);
     let decimalPart = roundedValue - Math.floor(roundedValue);
 
-    // Hvis decimalen er 0.01 eller 0.51, tilføjer den 0.49 for at nå den nærmeste .50 værdier.
-    // Hvis decimalen er 0.99 eller 0.49, tilføjer den 0.01 for at nå den nærmeste .00 or .95 værdi.
+    // Hvis decimalen er 0.01 eller 0.51, tilføjer den 0.49 for at nå den nærmeste .50 værdi.
+    // Hvis decimalen er 0.99 eller 0.49, tilføjer den 0.01 for at nå den nærmeste .00 eller .95 værdi.
     // Derefter returnerer den min 'pretty price' som en string med 2 decimaler , vha min 'toFixed()'-funktion.
 
     if (decimalPart === 0.01 || decimalPart === 0.51) {
