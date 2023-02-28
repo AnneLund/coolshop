@@ -5,7 +5,7 @@ function DeliveryDate() {
 
   function calculateDeliveryDate(orderTime) {
     // Konverterer til dansk tidszone
-    const orderTimeDK = new Date(orderTime.toString("en-US", { timeZone: "Europe/Copenhagen" }));
+    const orderTimeDK = new Date(orderTime.toLocaleString("en-US", { timeZone: "Europe/Copenhagen" }));
 
     // Checker om ordren kommer på hverdag
     const dayOfWeek = orderTimeDK.getUTCDay();
@@ -24,9 +24,12 @@ function DeliveryDate() {
       deliveryDate.setDate(deliveryDate.getDate() + 1);
     }
 
-    //Hvis ordre-datoen er mandag-fredag og inden kl. 15, leveres ordren dagen efter
+    //Hvis ordre-datoen er mandag-fredag og inden kl. 15, leveres ordren dagen efter.
+    //Hvis det er fredag, leveres den om mandagen.
     if (isBeforeCutoff && dayOfWeek < 5) {
       deliveryDate.setDate(deliveryDate.getDate() + 1);
+    } else if (dayOfWeek === 5) {
+      deliveryDate.setDate(deliveryDate.getDate() + 3);
     }
 
     // Checker om det er en hellig/ferie-dag eller weekend
@@ -38,7 +41,7 @@ function DeliveryDate() {
       deliveryDate.setDate(deliveryDate.getDate() + (deliveryDayOfWeek === 5 ? 3 : 1));
     }
 
-    return deliveryDate.toISOString().slice(0, 10);
+    return deliveryDate.toLocaleDateString().slice(0, 10);
   }
 
   function handleOrderTimeChange(event) {
