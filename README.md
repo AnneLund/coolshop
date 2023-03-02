@@ -1,6 +1,6 @@
 Opgavebesvarelse til opgave A, B og D, som aftalt.
 
-Opgaverne ligger i '/src/Opgaver'.
+Opgaverne ligger i '/src/Projects'.
 
 De er kodet i React, som jeg føler mig bedst tilrette i.
 
