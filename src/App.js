@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
-import PaymentCard from "./PaymentCard";
-import DeliveryDate from "./DeliveryDate";
-import PrettyPrice from "./PrettyPrice";
+import PaymentCard from "./Projects/PaymentCard";
+import DeliveryDate from "./Projects/DeliveryDate";
+import PrettyPrice from "./Projects/PrettyPrice";
 
 function App() {
   return (
